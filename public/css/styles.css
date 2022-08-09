@@ -1,0 +1,17 @@
+
+
+/* Formularios */
+.container_form{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    width: 60%;
+}
+
+.description{
+    resize: none;
+}

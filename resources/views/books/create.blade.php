@@ -1,0 +1,39 @@
+@extends("../layouts.books")
+
+@section("header")
+
+@endsection
+
+@section("main")
+<div class="container_form">
+    <form class="form" action="{{url('/books')}}" method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Ex: Don Quijote de la Mancha">
+        </div>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" name="gender">
+                <option selected>Select a Gender</option>
+                <option value="Novela">Novela</option>
+                <option value="Cuento">Cuento</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Historia">Historia</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="front_url" class="form-label">Front Page</label>
+            <input class="form-control" type="file" id="front_url" name="front_url" accept=".jpeg, .png, .jpg">
+        </div>
+        <div class="mb-3">
+            <label for="release_date" class="form-label">Release Date</label>
+            <input class="form-control" type="date" id="release_date" name="release_date">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control description" id="description" name="description" rows="3" placeholder="Wirite a short description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        {{csrf_field()}}
+    </form>
+</div>
+@endsection
