@@ -5,12 +5,17 @@
 @endsection
 
 @section("main")
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<h1 class="title">Books</h1>
+<article class="books_container">
+  @foreach($books as $book)
+  <div class="card" style="width: 18rem;">
+    <img src="images/books/{{$book->front_url}}" class="card-img-top img" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{$book->title}}</h5>
+      <p class="card-text">{{$book->description}}</p>
+      <a href="#" class="btn btn-primary">See More</a>
+    </div>
   </div>
-</div>
+  @endforeach
+</article>
 @endsection

@@ -15,3 +15,22 @@
 .description{
     resize: none;
 }
+
+
+/* Index */
+.title{
+    text-align: center;
+    font-size: 4em;
+}
+
+.books_container{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.img{
+    width: 100px;
+}

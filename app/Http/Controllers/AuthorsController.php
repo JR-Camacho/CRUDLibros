@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
-use App\Models\Book;
 use Illuminate\Http\Request;
 
-class BooksController extends Controller
+class AuthorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
-        return view("books.index", compact('books'));
+        //
     }
 
     /**
@@ -26,8 +24,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        $authors = Author::all();
-        return view("books.create", compact('authors'));
+        return view('authors.create');
     }
 
     /**
@@ -39,16 +36,15 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $entrada = $request->all();
-        $portada = $request->file('front_url');
+        $perfil = $request->file('photo_url');
 
-        if($portada){
-            $nombre_portada = $portada->getClientOriginalName();
-            $portada->move('images/books', $nombre_portada);
-            $entrada['front_url'] = $nombre_portada;
+        if($perfil){
+            $nombre_perfil = $perfil->getClientOriginalName();
+            $perfil->move('images/authors', $nombre_perfil);
+            $entrada['photo_url'] = $nombre_perfil;
         }
 
-        Book::create($entrada);
-
+        Author::create($entrada);
     }
 
     /**
