@@ -48,6 +48,7 @@ class BooksController extends Controller
         }
 
         Book::create($entrada);
+        return redirect("/books");
 
     }
 
@@ -59,7 +60,11 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $author = Book::findOrFail($id)->author;
+        // $author = Author::findOrFail($book->author_id);
+
+        return view("books.show", compact('book', 'author'));
     }
 
     /**

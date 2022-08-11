@@ -16,11 +16,14 @@
     resize: none;
 }
 
-
 /* Index */
 .title{
     text-align: center;
     font-size: 4em;
+}
+
+.btn_new{
+    margin-left: 30px;
 }
 
 .books_container{
@@ -32,5 +35,5 @@
 }
 
 .img{
-    width: 100px;
+    width: 100%;
 }
