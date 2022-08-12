@@ -6,40 +6,8 @@
 
 @section("main")
 <article class="article_show">
-  <section class="section book_info">
-    <h1 class="title text-uppercase">{{$book->title}}</h1>
-
-    <figure class="figure des_width">
-      <img src="{{ asset('images/books/'.$book->front_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$book->title}}">
-      <figcaption class="figure-caption text-end">{{$book->description}}</figcaption>
-    </figure>
-
-    <table class="table tb_width">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Release Date</th>
-          <th scope="col">Id Author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">{{$book->id}}</th>
-          <td>{{$book->title}}</td>
-          <td>{{$book->gender}}</td>
-          <td>{{$book->release_date}}</td>
-          <td>{{$book->author_id}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
   <section class="section author_info">
-    <h2 class="subtitle">Author</h2>
-
-    <h3 class="author_name text-uppercase">{{$author->name . " " . $author->surnames}}</h3>
+    <h1 class="title text-uppercase">{{$author->name . " " . $author->surnames}}</h1>
 
     <figure class="figure des_width">
       <img src="{{ asset('images/authors/'.$author->photo_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$author->name . ' ' . $author->surnames}}">
@@ -73,5 +41,19 @@
     </table>
   </section>
 
+  <section class="books_container">
+    @foreach($books as $book)
+    <div class="card m-4" style="width: 18rem;">
+      <img src="{{ asset('images/books/'.$book->front_url) }}" class="card-img-top img" alt="{{$book->title}}">
+      <div class="card-body">
+        <h5 class="card-title">{{$book->title}}</h5>
+        <p class="card-text">{{$book->description}}</p>
+        <div class="buttons">
+          <a href="{{route('books.show', $book->id)}}" class="btn btn-primary">See More</a>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </section>
 </article>
 @endsection

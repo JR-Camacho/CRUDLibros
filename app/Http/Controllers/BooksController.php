@@ -91,20 +91,7 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-
-        // $entrada = $request->all();
-        // $portada = $request->file('front_url');
-
-        // if($portada){
-        //     $nombre_portada = $portada->getClientOriginalName();
-        //     $portada->move('images/books', $nombre_portada);
-        //     $entrada['front_url'] = $nombre_portada;
-        // }
-
-        // Book::create($entrada);
-
-        
+    {    
         $book = Book::findOrFail($id);
         $entrada = $request->all();
         $portada = $request->file('front_url');
@@ -132,6 +119,9 @@ class BooksController extends Controller
     public function destroy($id)
     {
         $book = Book::findOrFail($id);
+        if($book->front_url != ''){
+            unlink('images/books/'. $book->front_url);
+        }
         $book->delete();
 
         return redirect("/books");

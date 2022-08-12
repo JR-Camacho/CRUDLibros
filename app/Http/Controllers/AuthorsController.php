@@ -14,7 +14,8 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::all();
+        return view("authors.index", compact('authors'));
     }
 
     /**
@@ -45,6 +46,7 @@ class AuthorsController extends Controller
         }
 
         Author::create($entrada);
+        return redirect('/authors');
     }
 
     /**
@@ -55,7 +57,9 @@ class AuthorsController extends Controller
      */
     public function show($id)
     {
-        //
+        $author = Author::findOrFail($id);
+        $books = Author::findOrFail($id)->book;
+        return view("authors.show", compact('books', 'author'));
     }
 
     /**
@@ -66,7 +70,9 @@ class AuthorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $author = Author::findOrFail($id);
+
+        return view("authors.edit", compact('author'));
     }
 
     /**
@@ -78,7 +84,22 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $author = Author::findOrFail($id);
+        $entrada = $request->all();
+        $profile = $request->file('photo_url');
+
+        if($profile){
+            $photo_name = $profile->getClientOriginalName();
+            $profile->move('images/authors', $photo_name);
+            $entrada['photo_url'] = $photo_name;
+        }
+
+        if($author->photo_url != ''){
+            unlink('images/authors/'. $author->photo_url);
+        }
+
+        $author->update($entrada);
+         return redirect("/authors");
     }
 
     /**
@@ -89,6 +110,12 @@ class AuthorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $author = Author::findOrFail($id);
+        if($author->photo_url != ''){
+            unlink('images/authors/'. $author->photo_url);
+        }
+        $author->delete();
+
+        return redirect("/authors");
     }
 }
