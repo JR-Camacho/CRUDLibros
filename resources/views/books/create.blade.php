@@ -31,6 +31,9 @@
         <div class="mb-3">
             <label for="front_url" class="form-label">Front Page</label>
             <input class="form-control" type="file" id="front_url" name="front_url" accept=".jpeg, .png, .jpg">
+            @error('front_url')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="release_date" class="form-label">Release Date</label>

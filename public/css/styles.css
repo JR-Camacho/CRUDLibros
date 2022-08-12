@@ -37,3 +37,28 @@
 .img{
     width: 100%;
 }
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+/* Show */
+
+.section{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.des_width, .tb_width{
+    width: 70%;
+}
+
+.img_pic{
+    width: 40%;
+}

@@ -38,6 +38,7 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(['front_url' => 'required|image']);
         $entrada = $request->all();
         $portada = $request->file('front_url');
 
@@ -75,7 +76,11 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $autores = Author::all();
+        $book = Book::findOrFail($id);
+        $author = Book::findOrFail($id)->author;
+
+        return view("books.edit", compact('book', 'autores', 'author'));
     }
 
     /**
@@ -87,7 +92,35 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        // $entrada = $request->all();
+        // $portada = $request->file('front_url');
+
+        // if($portada){
+        //     $nombre_portada = $portada->getClientOriginalName();
+        //     $portada->move('images/books', $nombre_portada);
+        //     $entrada['front_url'] = $nombre_portada;
+        // }
+
+        // Book::create($entrada);
+
+        
+        $book = Book::findOrFail($id);
+        $entrada = $request->all();
+        $portada = $request->file('front_url');
+
+        if($portada){
+            $nombre_portada = $portada->getClientOriginalName();
+            $portada->move('images/books', $nombre_portada);
+            $entrada['front_url'] = $nombre_portada;
+        }
+
+        if($book->front_url != ''){
+            unlink('images/books/'. $book->front_url);
+        }
+
+        $book->update($entrada);
+         return redirect("/books");
     }
 
     /**
@@ -98,6 +131,9 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect("/books");
     }
 }

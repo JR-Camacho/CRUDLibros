@@ -5,16 +5,16 @@
 @endsection
 
 @section("main")
-<article>
-  <section>
-    <h1 class="title">{{$book->title}}</h1>
+<article class="article_show">
+  <section class="section author_info">
+    <h1 class="title text-uppercase">{{$book->title}}</h1>
 
-    <div class="clearfix">
-      <img src="images/books/{{$book->front_url}}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="{{$book->title}}">
-      <p>{{$book->description}}</p>
-    </div>
+    <figure class="figure des_width">
+      <img src="{{ asset('images/books/'.$book->front_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$book->title}}">
+      <figcaption class="figure-caption text-end">{{$book->description}}</figcaption>
+    </figure>
 
-    <table class="table">
+    <table class="table tb_width">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -36,17 +36,18 @@
     </table>
   </section>
 
-  <section>
-    <h2>Author</h2>
+  <section class="section author_info">
+    <h2 class="subtitle">Author</h2>
 
-    <h3>{{$author->name}}</h3>
-    <div class="clearfix">
-      <img src="images/authors/{{$author->photo_url}}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="{{$author->title}}">
-      <p>{{$author->description}}</p>
-    </div>
+    <h3 class="author_name text-uppercase">{{$author->name . " " . $author->surnames}}</h3>
+
+    <figure class="figure des_width">
+      <img src="{{ asset('images/authors/'.$author->photo_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$author->name . ' ' . $author->surnames}}">
+      <figcaption class="figure-caption text-end">{{$author->description}}</figcaption>
+    </figure>
 
 
-    <table class="table">
+    <table class="table tb_width">
       <thead>
         <tr>
           <th scope="col">#</th>
