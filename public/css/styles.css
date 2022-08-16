@@ -1,3 +1,8 @@
+/* Nav Bar */
+/* .icon{
+    width: 40px;
+    height: 40px;
+} */
 
 
 /* Formularios */
@@ -14,6 +19,12 @@
 
 .description{
     resize: none;
+}
+
+@media screen and (max-width: 700px) {
+   .form{
+        width: 95%;
+   }
 }
 
 /* Index */
@@ -34,6 +45,11 @@
     flex-wrap: wrap;
 }
 
+.card_book, .card_author{
+    width: 40%;
+    margin-bottom: 30px;
+}
+
 .img{
     width: 100%;
 }
@@ -42,6 +58,19 @@
     display: flex;
     justify-content: space-between;
     padding: 15px;
+}
+
+@media screen and (max-width: 700px) {
+    .books_container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card_book, .card_author{
+        width: 95%;
+        margin-top: 30px;
+    }
 }
 
 /* Show */
@@ -55,10 +84,53 @@
     align-items: center;
 }
 
-.des_width, .tb_width{
+.figure_show{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tb_width{
     width: 70%;
 }
 
 .img_pic{
-    width: 40%;
+    width: 50%;
+}
+
+@media screen and (max-width: 700px) {
+    .figure_show{
+        width: 95%;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .img_pic{
+        width: 100%;
+    }
+
+    .tb_width{
+        width: 95%;
+    }
+}
+
+
+/* Welcome */
+.carrusel_container{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carrusel{
+    width: 50%;   
+}
+
+.img_carusel{
+    width: 100%;
+    height: auto;
 }

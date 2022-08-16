@@ -9,9 +9,9 @@
   <section class="section author_info">
     <h1 class="title text-uppercase">{{$author->name . " " . $author->surnames}}</h1>
 
-    <figure class="figure des_width">
+    <figure class="figure figure_show">
       <img src="{{ asset('images/authors/'.$author->photo_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$author->name . ' ' . $author->surnames}}">
-      <figcaption class="figure-caption text-end">{{$author->description}}</figcaption>
+      <figcaption class="figure-caption m-2">{{$author->description}}</figcaption>
     </figure>
 
 
@@ -43,7 +43,7 @@
 
   <section class="books_container">
     @foreach($books as $book)
-    <div class="card m-4" style="width: 18rem;">
+    <div class="card card_book">
       <img src="{{ asset('images/books/'.$book->front_url) }}" class="card-img-top img" alt="{{$book->title}}">
       <div class="card-body">
         <h5 class="card-title">{{$book->title}}</h5>

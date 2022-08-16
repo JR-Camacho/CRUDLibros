@@ -9,9 +9,9 @@
   <section class="section book_info">
     <h1 class="title text-uppercase">{{$book->title}}</h1>
 
-    <figure class="figure des_width">
+    <figure class="figure figure_show">
       <img src="{{ asset('images/books/'.$book->front_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$book->title}}">
-      <figcaption class="figure-caption text-end">{{$book->description}}</figcaption>
+      <figcaption class="figure-caption m-2">{{$book->description}}</figcaption>
     </figure>
 
     <table class="table tb_width">
@@ -41,9 +41,9 @@
 
     <h3 class="author_name text-uppercase">{{$author->name . " " . $author->surnames}}</h3>
 
-    <figure class="figure des_width">
+    <figure class="figure figure_show">
       <img src="{{ asset('images/authors/'.$author->photo_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$author->name . ' ' . $author->surnames}}">
-      <figcaption class="figure-caption text-end">{{$author->description}}</figcaption>
+      <figcaption class="figure-caption m-2">{{$author->description}}</figcaption>
     </figure>
 
 

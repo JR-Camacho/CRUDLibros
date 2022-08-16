@@ -9,7 +9,7 @@
 <a class="btn btn-primary btn-lg m-4" href="{{url('/authors/create')}}" role="button">NEW</a>
 <article class="books_container">
   @foreach($authors as $author)
-  <div class="card m-4" style="width: 18rem;">
+  <div class="card card_author">
     <img src="images/authors/{{$author->photo_url}}" class="card-img-top img" alt="{{$author->title}}">
     <div class="card-body">
       <h5 class="card-title">{{$author->name . " " . $author->surnames}}</h5>
