@@ -12,8 +12,7 @@ class WelcomeController extends Controller
     {
         $books = Book::take(3)->orderBy('title', 'desc')
         ->get();
-        $authors = Author::take(3)->orderBy('name', 'desc')
-        ->get();
+        $authors = Author::all();
         return view("welcome", compact('books', 'authors'));
     }
 }

@@ -1,13 +1,33 @@
 @extends("../layouts.books")
 
 @section("header")
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="{{url('/')}}"><i class="fa-solid fa-book icon"></i></a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('books')}}">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('authors')}}">Authors</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 @endsection
 
 @section("main")
 <article class="article_show">
   <section class="section book_info">
-    <h1 class="title text-uppercase">{{$book->title}}</h1>
+    <h1 class="title text-uppercase display-1">{{$book->title}}</h1>
 
     <figure class="figure figure_show">
       <img src="{{ asset('images/books/'.$book->front_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$book->title}}">
@@ -37,9 +57,9 @@
   </section>
 
   <section class="section author_info">
-    <h2 class="subtitle">Author</h2>
+    <h2 class="subtitle display-2">Author</h2>
 
-    <h3 class="author_name text-uppercase">{{$author->name . " " . $author->surnames}}</h3>
+    <h3 class="author_name text-uppercase display-5">{{$author->name . " " . $author->surnames}}</h3>
 
     <figure class="figure figure_show">
       <img src="{{ asset('images/authors/'.$author->photo_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$author->name . ' ' . $author->surnames}}">

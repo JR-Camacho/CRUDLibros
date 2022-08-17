@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthorsController extends Controller
 {
@@ -12,10 +13,14 @@ class AuthorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $authors = Author::all();
-        return view("authors.index", compact('authors'));
+        // $authors = Author::all();
+        // return view("authors.index", compact('authors'));
+
+        $text = trim($request->get('text'));
+        $authors = DB::table('authors')->select('*')->where('name', 'like', '%' .$text . '%')->orWhere('surnames', 'like', '%' .$text . '%')->orWhere('id', 'like', '%' . $text .'%')->orderBy('name', 'asc')->paginate(5);
+        return view("authors.index", compact('authors', 'text'));
     }
 
     /**
@@ -40,7 +45,7 @@ class AuthorsController extends Controller
         $perfil = $request->file('photo_url');
 
         if($perfil){
-            $nombre_perfil = $perfil->getClientOriginalName();
+            $nombre_perfil = time() . '_' . $perfil->getClientOriginalName();
             $perfil->move('images/authors', $nombre_perfil);
             $entrada['photo_url'] = $nombre_perfil;
         }
@@ -89,9 +94,9 @@ class AuthorsController extends Controller
         $profile = $request->file('photo_url');
 
         if($profile){
-            $photo_name = $profile->getClientOriginalName();
-            $profile->move('images/authors', $photo_name);
-            $entrada['photo_url'] = $photo_name;
+            $nombre_perfil = time() . '_' . $profile->getClientOriginalName();
+            $profile->move('images/authors', $nombre_perfil);
+            $entrada['photo_url'] = $nombre_perfil;
         }
 
         if($author->photo_url != ''){

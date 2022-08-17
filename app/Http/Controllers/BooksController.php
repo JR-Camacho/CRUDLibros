@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -13,10 +14,14 @@ class BooksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::all();
-        return view("books.index", compact('books'));
+        // $books = Book::all();
+        // return view("books.index", compact('books'));
+
+        $text = trim($request->get('text'));
+        $books = DB::table('books')->select('*')->where('title', 'like', '%' .$text . '%')->orWhere('id', 'like', '%' . $text .'%')->orderBy('title', 'asc')->paginate(5);
+        return view("books.index", compact('books', 'text'));
     }
 
     /**
@@ -38,12 +43,12 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['front_url' => 'required|image']);
+        $request->validate(['front_url' => 'image']);
         $entrada = $request->all();
         $portada = $request->file('front_url');
 
         if($portada){
-            $nombre_portada = $portada->getClientOriginalName();
+            $nombre_portada = time() . '_' . $portada->getClientOriginalName();
             $portada->move('images/books', $nombre_portada);
             $entrada['front_url'] = $nombre_portada;
         }
@@ -67,6 +72,16 @@ class BooksController extends Controller
 
         return view("books.show", compact('book', 'author'));
     }
+
+    // public function look($id)
+    // {
+    //     $book = Book::findOrFail($id);
+    //     $author = Book::findOrFail($id)->author;
+    //     // $author = Author::findOrFail($book->author_id);
+
+    //     return view("look", compact('book', 'author'));
+    // }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -97,7 +112,7 @@ class BooksController extends Controller
         $portada = $request->file('front_url');
 
         if($portada){
-            $nombre_portada = $portada->getClientOriginalName();
+            $nombre_portada = time() . '_' . $portada->getClientOriginalName();
             $portada->move('images/books', $nombre_portada);
             $entrada['front_url'] = $nombre_portada;
         }

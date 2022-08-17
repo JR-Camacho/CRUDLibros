@@ -1,10 +1,31 @@
 @extends("../layouts.books")
 
 @section("header")
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="{{url('/')}}"><i class="fa-solid fa-book icon"></i></a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('books')}}">Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('authors')}}">Authors</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 @endsection
 
 @section("main")
+<h1 class="title display-1">Edit an Author</h1>
 <div class="container_form">
     <form class="form" action="{{url('/authors/'.$author->id)}}" method="post" enctype="multipart/form-data">
     <div class="mb-3">
@@ -59,11 +80,15 @@
         </div>
         <div class="mb-3">
             <label for="photo_url" class="form-label">Porfile Photo</label>
-            <input class="form-control" type="file" id="photo_url" name="photo_url" accept=".jpeg, .png, .jpg">
+            <input class="form-control" type="file" id="photo_url" name="photo_url" accept=".jpeg, .png, .jpg" value="images/authors/{{$author->photo_url}}">
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control description" id="description" name="description" rows="3" placeholder="Wirite a short description">{{$author->description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="phrase" class="form-label">Phrase</label>
+            <textarea class="form-control description" id="phrase" name="phrase" rows="3" placeholder="Wirite a phrase">{{$author->phrase}}</textarea>
         </div>
         <input type="hidden" name="_method" value="put">
         <button type="submit" class="btn btn-primary">Update</button>
