@@ -1,3 +1,12 @@
+header{
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+.nav_height{
+    padding: 20px;
+}
 
 /* Formularios */
 .container_form{
@@ -25,12 +34,12 @@
 /* Index */
 .title{
     text-align: center;
-    font-size: 4em;
+    font-size: 4rem;
     margin: 30px;
 }
 
 .btn_new{
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .books_container{
@@ -62,6 +71,10 @@
 }
 
 @media screen and (max-width: 700px) {
+    .btn_new{
+        font-size: 1rem;
+    }
+
     .books_container{
         flex-direction: column;
         justify-content: center;
@@ -70,13 +83,26 @@
 
     .card_book, .card_author{
         width: 95%;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .alerta{
         width: 95%;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .card_book, .card_author{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 265px) {
+    .buttons{
+        padding: 0;
+    }
+}
+
 
 /* Show */
 
@@ -137,10 +163,38 @@
     }
 }
 
-/* Welcome */
+@media screen and (max-width: 500px) {
+    .tb_width{
+        font-size: 0.7rem;
+    }
+}
 
+@media screen and (max-width: 375px) {
+    .tb_width{
+        font-size: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 335px) {
+    .tb_width{
+        font-size: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .tb_width{
+        font-size: 0.4rem;
+    }
+}
+
+/* Welcome */
 .sub_subtitle{
-    margin: 30px
+    text-align: center;
+    margin: 30px 10px;
+}
+
+.img_welcome{
+    width: 100%;
 }
 
 .carusel_container{
@@ -159,13 +213,133 @@
     box-shadow: 0px 10px 10px;
 }
 
+.text_carusel{
+    color: #000;
+    font-weight: bold;
+}
+
+.title_carusel{
+    color: #000;
+}
+
 .card_welcome{
     margin-top:30px;
     box-shadow: 0px 10px 10px;
 }
 
-@media screen and (max-width: 700px) {
-    .card_welcome{
-        width: 95%;
+@media screen and (max-width: 1000px) {
+    .carusel{
+        width: 85%;
+    }
+
+    .cap_carusel{
+        left: auto;
+        right: auto;
+        bottom: 10px;
+        margin: 10px;
+        padding: 0;
     }
 }
+
+@media screen and (max-width: 700px) {
+    .card_welcome, .carusel{
+        width: 95%;
+    }
+
+    .text_carusel{
+        font-size: 0.9rem;
+    }
+
+    .title_carusel{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .title_welcome{
+        font-size: 3rem;
+    }
+
+    .subtitle{
+        margin: 0 10px;
+    }
+
+    .card_welcome{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .text_carusel{
+        font-size: 0.8rem;
+    }
+
+    .title_carusel{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    .title_welcome{
+        font-size: 2rem;
+    }
+
+    .subtitle{
+        font-size: 1.5rem;
+        text-align: left;
+    }
+
+    .sub_subtitle{
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .text_carusel{
+        font-size: 0.7rem;
+    }
+
+    .title_carusel{
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 315px) {
+    .text_carusel{
+        font-size: 0.6rem;
+    }
+
+    .title_carusel{
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .title_welcome{
+        font-size: 1.5rem;
+    }
+
+    .subtitle{
+        font-size: 1rem;
+    }
+
+    .text_carusel{
+        font-size: 0.5rem;
+    }
+
+    .title_carusel{
+        font-size: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 245px) {
+    .text_carusel{
+        font-size: 0.4rem;
+    }
+
+    .title_carusel{
+        font-size: 0.5rem;
+    }
+}
+
+
+

@@ -1,27 +1,7 @@
 @extends("../layouts.books")
 
 @section("header")
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="{{url('/')}}"><i class="fa-solid fa-book icon"></i></a> -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('books')}}">Books</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('authors')}}">Authors</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
 @endsection
 
 @section("main")
@@ -31,6 +11,9 @@
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Ex: Don Quijote de la Mancha" autofocus>
+            @error('title')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <select class="form-select" aria-label="Default select example" name="gender">

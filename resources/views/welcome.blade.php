@@ -1,9 +1,8 @@
-@extends("./layouts.books")
+@extends("./layouts.layout_buscador")
 
 @section("header")
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_height">
+        <div class="container-fluid nav_h">
             <!-- <a class="navbar-brand" href="{{url('/')}}"><i class="fa-solid fa-book icon"></i></a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,24 +20,23 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" disabled>
+                    <button class="btn btn-outline-success" type="submit" disabled>Search</button>
                 </form>
             </div>
         </div>
     </nav>
-</header>
 @endsection
 
 @section("main")
-<h1 class="title display-1">Books Register</h1>
+<h1 class="title title_welcome display-1">Books Register</h1>
 <h2 class="subtitle display-5">¡You can register all the books and authors you want and whenever you want!</h2>
 <div class="books_container">
     @foreach($books as $book)
     <div class="card mb-3 card_welcome" style="max-width: 540px;">
         <div class="row g-0">
-            <div class="col-md-4">
-                <img src="images/books/{{$book->front_url}}" class="img-fluid rounded-start" alt="{{$book->title}}">
+            <div class="col-md-4 cont_image">
+                <img src="images/books/{{$book->front_url}}" class="img-fluid rounded-start img_welcome" alt="{{$book->title}}">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -52,7 +50,7 @@
     @endforeach
 </div>
 
-<h3 class="sub_subtitle display-6 text-center">Phrases And Descriptions Of Our Authors</h2>
+<h3 class="display-6 sub_subtitle">Phrases and descriptions of some authors</h2>
 <div class="carusel_container">
 <div id="carouselExampleCaptions" class="carousel slide carusel" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -63,13 +61,13 @@
   <div class="carousel-inner">
     @foreach($authors as $author)
     <div class="carousel-item active" data-bs-interval="5000">
-      <img src="images/johannes-plenio-RwHv7LgeC7s-unsplash.jpg" class="d-block w-100" alt="{{$author->name . ' ' . $author->surnames}}">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>{{$author->name . ' ' . $author->surnames}}</h5>
+      <img src="images/old-books-with-white-background-and-copy-space.jpg" class="d-block w-100" alt="{{$author->name . ' ' . $author->surnames}}">
+      <div class="carousel-caption d-md-block cap_carusel">
+        <h5 class="text_carusel title_carusel">{{$author->name . ' ' . $author->surnames}}</h5>
         @if($author->phrase)
-        <p>{{$author->phrase}}</p>
+        <p class="text_carusel">"{{$author->phrase}}"</p>
         @else
-        <p>{{$author->description}}</p>
+        <p class="text_carusel">{{$author->description}}</p>
         @endif
       </div>
     </div>

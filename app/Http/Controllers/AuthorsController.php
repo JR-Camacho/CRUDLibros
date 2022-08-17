@@ -41,6 +41,7 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(['photo_url' => 'image|max:3000', 'name' => 'required', 'phrase' => 'max:390']);
         $entrada = $request->all();
         $perfil = $request->file('photo_url');
 
@@ -90,6 +91,7 @@ class AuthorsController extends Controller
     public function update(Request $request, $id)
     {
         $author = Author::findOrFail($id);
+        $request->validate(['phrase' => 'max:390']);
         $entrada = $request->all();
         $profile = $request->file('photo_url');
 
@@ -97,10 +99,10 @@ class AuthorsController extends Controller
             $nombre_perfil = time() . '_' . $profile->getClientOriginalName();
             $profile->move('images/authors', $nombre_perfil);
             $entrada['photo_url'] = $nombre_perfil;
-        }
 
-        if($author->photo_url != ''){
-            unlink('images/authors/'. $author->photo_url);
+            if($author->photo_url != ''){
+                unlink('images/authors/'. $author->photo_url);
+            }
         }
 
         $author->update($entrada);

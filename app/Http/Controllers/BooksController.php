@@ -43,7 +43,7 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['front_url' => 'image']);
+        $request->validate(['front_url' => 'image|max:3000', 'title' => 'required']);
         $entrada = $request->all();
         $portada = $request->file('front_url');
 
@@ -115,10 +115,10 @@ class BooksController extends Controller
             $nombre_portada = time() . '_' . $portada->getClientOriginalName();
             $portada->move('images/books', $nombre_portada);
             $entrada['front_url'] = $nombre_portada;
-        }
 
-        if($book->front_url != ''){
-            unlink('images/books/'. $book->front_url);
+            if($book->front_url != ''){
+                unlink('images/books/'. $book->front_url);
+            }
         }
 
         $book->update($entrada);

@@ -1,8 +1,7 @@
-@extends("../layouts.books")
+@extends("../layouts.layout_buscador")
 
 @section("header")
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_height">
         <div class="container-fluid">
             <!-- <a class="navbar-brand" href="{{url('/')}}"><i class="fa-solid fa-book icon"></i></a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +26,11 @@
             </div>
         </div>
     </nav>
-</header>
 @endsection
 
 @section("main")
 <h1 class="title display-1">Authors</h1>
-<a class="btn btn-primary btn-lg m-4" href="{{url('/authors/create')}}" role="button">NEW</a>
+<a class="btn btn-primary btn-lg btn_new" href="{{url('/authors/create')}}" role="button">NEW</a>
 <article class="books_container">
 @if(count($authors) <= 0)
   <div class="alert alert-info alerta" role="alert">
