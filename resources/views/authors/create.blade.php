@@ -11,7 +11,7 @@
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Ex: José Rafael" autofocus>
-            @error('photo_url')
+            @error('name')
                 <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
@@ -49,6 +49,9 @@
         <div class="mb-3">
             <label for="photo_url" class="form-label">Porfile Photo</label>
             <input class="form-control" type="file" id="photo_url" name="photo_url" accept=".jpeg, .png, .jpg">
+            @error('photo_url')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>

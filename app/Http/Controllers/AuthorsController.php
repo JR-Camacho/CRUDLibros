@@ -91,7 +91,7 @@ class AuthorsController extends Controller
     public function update(Request $request, $id)
     {
         $author = Author::findOrFail($id);
-        $request->validate(['phrase' => 'max:390']);
+        $request->validate(['photo_url' => 'image|max:3000', 'name' => 'required', 'phrase' => 'max:390']);
         $entrada = $request->all();
         $profile = $request->file('photo_url');
 

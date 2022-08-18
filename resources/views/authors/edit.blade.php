@@ -11,6 +11,9 @@
     <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Ex: José Rafael" value="{{$author->name}}">
+            @error('name')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="surnames" class="form-label">Surnames</label>
@@ -61,6 +64,9 @@
         <div class="mb-3">
             <label for="photo_url" class="form-label">Porfile Photo</label>
             <input class="form-control" type="file" id="photo_url" name="photo_url" accept=".jpeg, .png, .jpg" value="images/authors/{{$author->photo_url}}">
+            @error('photo_url')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
@@ -69,6 +75,9 @@
         <div class="mb-3">
             <label for="phrase" class="form-label">Phrase</label>
             <textarea class="form-control description" id="phrase" name="phrase" rows="3" placeholder="Wirite a phrase">{{$author->phrase}}</textarea>
+            @error('phrase')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <input type="hidden" name="_method" value="put">
         <button type="submit" class="btn btn-primary">Update</button>

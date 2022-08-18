@@ -108,6 +108,7 @@ class BooksController extends Controller
     public function update(Request $request, $id)
     {    
         $book = Book::findOrFail($id);
+        $request->validate(['front_url' => 'image|max:3000', 'title' => 'required']);
         $entrada = $request->all();
         $portada = $request->file('front_url');
 

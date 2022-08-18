@@ -22,6 +22,9 @@
                 <option value="Cuento">Cuento</option>
                 <option value="Aventura">Aventura</option>
                 <option value="Historia">Historia</option>
+                <option value="Poema">Poema</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Ensayo">Ensayo</option>
             </select>
         </div>
         <div class="mb-3">

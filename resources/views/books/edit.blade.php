@@ -11,6 +11,9 @@
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Ex: Don Quijote de la Mancha" value="{{$book->title}}">
+            @error('title')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="gender" class="form-label">Gender</label>
@@ -20,6 +23,9 @@
                 <option value="Cuento">Cuento</option>
                 <option value="Aventura">Aventura</option>
                 <option value="Historia">Historia</option>
+                <option value="Poema">Poema</option>
+                <option value="Comedia">Comedia</option>
+                <option value="Ensayo">Ensayo</option>
             </select>
         </div>
         <div class="mb-3">
@@ -41,6 +47,9 @@
         <div class="mb-3">
             <label for="front_url" class="form-label">Front Page</label>
             <input class="form-control" type="file" id="front_url" name="front_url" accept=".jpeg, .png, .jpg" value="images/books/{{$book->front_url}}">
+            @error('front_url')
+                <p class="text-danger">{{$message}}</p>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="release_date" class="form-label">Release Date</label>
