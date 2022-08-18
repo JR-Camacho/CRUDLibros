@@ -27,6 +27,9 @@
             <select class="form-select" aria-label="Default select example" id="author" name="author_id">
                 @if($author)
                 <option selected value="{{$author->id}}">{{$author->name . " " . $author->surnames}}</option>
+                @foreach($autores as $autor)
+                <option value="{{$autor->id}}">{{$autor->name . " " . $autor->surnames}}</option>
+                @endforeach
                 @else
                 <option selected value="">Select an Author</option>
                 @foreach($autores as $autor)
