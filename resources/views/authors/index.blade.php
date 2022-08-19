@@ -37,7 +37,7 @@
     @else
     @foreach($authors as $author)
     <div class="card card_author">
-      @if($book->photo_url)
+      @if($author->photo_url)
       <img src="images/authors/{{$author->photo_url}}" class="card-img-top img" alt="{{$author->name}}">
       @else
       <img src="images/sinimagen.jpg" class="card-img-top img" alt="{{$book->title}}">
