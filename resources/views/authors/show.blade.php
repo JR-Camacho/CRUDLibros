@@ -53,11 +53,7 @@
   <section class="books_container">
     @foreach($books as $book)
     <div class="card card_book">
-      @if($book->front_url)
       <img src="images/books/{{$book->front_url}}" class="card-img-top img" alt="{{$book->title}}">
-      @else
-      <img src="images/sinimagen.jpg" class="card-img-top img" alt="{{$book->title}}">
-      @endif
       <div class="card-body">
         <h5 class="card-title">{{$book->title}}</h5>
         <p class="card-text">{{$book->description}}</p>
