@@ -49,21 +49,25 @@
   </section>
 
   @if($books)
-    <h2 class="subtitle display-2">Books</h2>
-    <section class="books_container">
-      @foreach($books as $book)
-      <div class="card card_book">
-        <img src="{{ asset('images/books/'.$book->front_url) }}" class="card-img-top img" alt="{{$book->title}}">
-        <div class="card-body">
-          <h5 class="card-title">{{$book->title}}</h5>
-          <p class="card-text">{{$book->description}}</p>
-          <div class="buttons">
-            <a href="{{route('books.show', $book->id)}}" class="btn btn-info">See More</a>
-          </div>
+  <h2 class="subtitle display-2">Books</h2>
+  <section class="books_container">
+    @foreach($books as $book)
+    <div class="card card_book">
+      @if($book->front_url)
+      <img src="images/books/{{$book->front_url}}" class="card-img-top img" alt="{{$book->title}}">
+      @else
+      <img src="images/sinimagen.jpg" class="card-img-top img" alt="{{$book->title}}">
+      @endif
+      <div class="card-body">
+        <h5 class="card-title">{{$book->title}}</h5>
+        <p class="card-text">{{$book->description}}</p>
+        <div class="buttons">
+          <a href="{{route('books.show', $book->id)}}" class="btn btn-info">See More</a>
         </div>
       </div>
-      @endforeach
-    </section>
+    </div>
+    @endforeach
+  </section>
   @endif
 </article>
 @endsection

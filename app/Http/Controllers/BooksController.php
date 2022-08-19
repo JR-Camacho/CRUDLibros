@@ -73,16 +73,6 @@ class BooksController extends Controller
         return view("books.show", compact('book', 'author'));
     }
 
-    // public function look($id)
-    // {
-    //     $book = Book::findOrFail($id);
-    //     $author = Book::findOrFail($id)->author;
-    //     // $author = Author::findOrFail($book->author_id);
-
-    //     return view("look", compact('book', 'author'));
-    // }
-
-
     /**
      * Show the form for editing the specified resource.
      *

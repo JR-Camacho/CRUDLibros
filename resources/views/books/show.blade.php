@@ -10,7 +10,9 @@
     <h1 class="text-uppercase display-1 title title_welcome">{{$book->title}}</h1>
 
     <figure class="figure figure_show">
+      @if($book->front_url)
       <img src="{{ asset('images/books/'.$book->front_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$book->title}}">
+      @endif
       <figcaption class="figure-caption m-2">{{$book->description}}</figcaption>
     </figure>
 
@@ -43,7 +45,9 @@
     <h3 class="author_name text-uppercase display-5">{{$author->name . " " . $author->surnames}}</h3>
 
     <figure class="figure figure_show">
+      @if($author->photo_url)
       <img src="{{ asset('images/authors/'.$author->photo_url) }}" class="figure-img img-fluid rounded img_pic" alt="{{$author->name . ' ' . $author->surnames}}">
+      @endif
       <figcaption class="figure-caption m-2">{{$author->description}}</figcaption>
     </figure>
 

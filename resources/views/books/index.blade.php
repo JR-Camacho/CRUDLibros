@@ -3,7 +3,6 @@
 @section("header")
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_height">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand" href="{{url('/')}}"><i class="fa-solid fa-book icon"></i></a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +39,11 @@
   @else
   @foreach($books as $book)
   <div class="card card_book">
+    @if($book->front_url)
     <img src="images/books/{{$book->front_url}}" class="card-img-top img" alt="{{$book->title}}">
+    @else
+    <img src="images/sinimagen.jpg" class="card-img-top img" alt="{{$book->title}}">
+    @endif
     <div class="card-body">
       <h5 class="card-title">{{$book->title}}</h5>
       <p class="card-text">{{$book->description}}</p>
