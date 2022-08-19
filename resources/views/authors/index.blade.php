@@ -40,7 +40,7 @@
       @if($author->photo_url)
       <img src="images/authors/{{$author->photo_url}}" class="card-img-top img" alt="{{$author->name}}">
       @else
-      <img src="images/sinimagen.jpg" class="card-img-top img" alt="{{$book->title}}">
+      <img src="images/sinimagen.jpg" class="card-img-top img" alt="{{$author->name}}">
       @endif
       <div class="card-body">
         <h5 class="card-title">{{$author->name . " " . $author->surnames}}</h5>
